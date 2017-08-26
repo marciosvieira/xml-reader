@@ -9,7 +9,7 @@ public class FeedItem {
 	
 	protected String link;
 	
-	protected List<Description> description;
+	protected List<Description<Object>> description;
 
 	/**
 	 * @param titleParam
@@ -18,7 +18,7 @@ public class FeedItem {
 	 * 
 	 * Construtor de item do feed no padrao de saida
 	 */
-	public FeedItem(String titleParam, String linkParam, List<Description> descriptionListParam) {
+	public FeedItem(String titleParam, String linkParam, List<Description<Object>> descriptionListParam) {
 		setTitle(titleParam);
 		setLink(linkParam);
 		getDescription().addAll(descriptionListParam);
@@ -55,9 +55,9 @@ public class FeedItem {
 	/**
 	 * @return the description
 	 */
-	public List<Description> getDescription() {
+	public List<Description<Object>> getDescription() {
 		if (description == null) {
-			description = new ArrayList<Description>();
+			description = new ArrayList<Description<Object>>();
 		}
 		
 		return this.description;

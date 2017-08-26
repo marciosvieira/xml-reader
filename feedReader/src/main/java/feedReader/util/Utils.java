@@ -19,13 +19,13 @@ public final class Utils {
 	 * 
 	 * Popula a lista de itens contida no campo 'description' do feed 
 	 */
-	public static List<Description> fillDescriptionList(String desc) {
+	public static List<Description<Object>> fillDescriptionList(String desc) {
 		
 		String clean = null;
 		
 		List<String> links = null;
 		
-		List<Description> list = new ArrayList<Description>();
+		List<Description<Object>> list = new ArrayList<Description<Object>>();
 		
 		// iterando elementos do campo 'description'
 		for (Element element : Jsoup.parse(desc).getAllElements()) {
@@ -33,7 +33,7 @@ public final class Utils {
 			// recuperando elemento do tipo imagem
 			if (element.tagName().equalsIgnoreCase(Constants.IMG)) {
 				
-				list.add(new Description(Constants.IMAGE, element.attr(Constants.SRC)));
+				list.add(new Description<Object>(Constants.IMAGE, element.attr(Constants.SRC)));
 				
 			}
 			
@@ -45,7 +45,7 @@ public final class Utils {
 				
 				if (!clean.trim().isEmpty()) {
 					
-					list.add(new Description(Constants.TEXT, element.text()));
+					list.add(new Description<Object>(Constants.TEXT, element.text()));
 					clean = null;
 					
 				}
@@ -63,7 +63,7 @@ public final class Utils {
 					
 				}
 				
-				list.add(new Description(Constants.LINKS, links));
+				list.add(new Description<Object>(Constants.LINKS, links));
 			}
 			
 		}

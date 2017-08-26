@@ -1,36 +1,20 @@
 package feedReader.tojson;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Description {
+public class Description<T> {
 	
 	protected String type;
 	
-	protected String content;
+	protected T content;
 	
-	protected List<String> contents;
-
 	/**
 	 * @param paramType
 	 * @param paramContent
 	 * 
-	 * Construtor para item do tipo Image ou Text
+	 * Construtor Description (Item)
 	 */
-	public Description(String paramType, String paramContent) {
+	public Description(String paramType, T paramContent) {
 		setType(paramType);
 		setContent(paramContent);
-	}
-
-	/**
-	 * @param paramType
-	 * @param paramLinks
-	 * 
-	 * Construtor para item do tipo Link
-	 */
-	public Description(String paramType, List<String> paramLinks) {
-		setType(paramType);
-		getLinks().addAll(paramLinks);
 	}
 
 	/**
@@ -50,25 +34,15 @@ public class Description {
 	/**
 	 * @return the content
 	 */
-	public String getContent() {
+	public T getContent() {
 		return content;
 	}
 
 	/**
 	 * @param content the content to set
 	 */
-	public void setContent(String content) {
+	public void setContent(T content) {
 		this.content = content;
-	}
-
-	/**
-	 * @return the links
-	 */
-	public List<String> getLinks() {
-		if(contents == null) {
-			contents = new ArrayList<String>();
-		}
-		return this.contents;
 	}
 
 }
